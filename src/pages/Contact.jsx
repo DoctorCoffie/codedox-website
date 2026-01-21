@@ -25,10 +25,10 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Send email using EmailJS with exact template variable names
+    // Send email using EmailJS
     emailjs.send(
       'service_3evlhzt',      // Service ID
-      'template_wly85dj',     // Template ID
+      'template_h0cqodd',     // Template ID
       {
         ime_i_prezime: formData.name,
         email: formData.email,
@@ -37,7 +37,7 @@ const Contact = () => {
         usluga: formData.service,
         poruka: formData.message
       },
-      'b5GIPwq3Vu1aXNkFZ'    // Public Key
+      'Ufh2cRbt_N-YMiHi6'    // Public Key
     )
     .then((response) => {
       console.log('SUCCESS!', response.status, response.text);
