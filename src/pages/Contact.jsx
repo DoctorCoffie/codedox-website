@@ -27,8 +27,8 @@ const Contact = () => {
 
     // Send email using EmailJS
     emailjs.send(
-      'service_fbdwrbu',   // Service ID
-      'b5GIPwq3Vu1aXNkFZ', // Template ID
+      'service_fbdwrbu',      // Service ID
+      'template_wly85dj',     // Template ID
       {
         ime_i_prezime: formData.name,
         email: formData.email,
@@ -37,7 +37,7 @@ const Contact = () => {
         usluga: formData.service,
         poruka: formData.message
       },
-      'b5GIPwq3Vu1aXNkFZ'  // Public Key
+      'b5GIPwq3Vu1aXNkFZ'    // Public Key
     )
     .then((response) => {
       console.log('SUCCESS!', response.status, response.text);
@@ -53,7 +53,8 @@ const Contact = () => {
           message: ''
         });
       }, 3000);
-    }, (error) => {
+    })
+    .catch((error) => {
       console.log('FAILED...', error);
       alert('Došlo je do greške pri slanju. Pokušajte ponovo.');
     });
@@ -78,7 +79,7 @@ const Contact = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '48px' }}>
           <div>
             <h2 className="h1" style={{ marginBottom: '24px' }}>Pošaljite Upit</h2>
-            
+
             {submitted ? (
               <div style={{
                 background: 'var(--accent-red-bg)',
