@@ -15,13 +15,20 @@ const Contact = () => {
 
   const [submitted, setSubmitted] = useState(false);
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Send email using EmailJS
     emailjs.send(
-      'service_fbdwrbu',               // Your Service ID
-      'template_b5GIPwq3Vu1aXNkFZ',   // Your Template ID
+      'service_fbdwrbu',   // Service ID
+      'b5GIPwq3Vu1aXNkFZ', // Template ID
       {
         ime_i_prezime: formData.name,
         email: formData.email,
@@ -30,7 +37,7 @@ const Contact = () => {
         usluga: formData.service,
         poruka: formData.message
       },
-      'b5GIPwq3Vu1aXNkFZ'              // Your Public Key
+      'b5GIPwq3Vu1aXNkFZ'  // Public Key
     )
     .then((response) => {
       console.log('SUCCESS!', response.status, response.text);
@@ -52,21 +59,10 @@ const Contact = () => {
     });
   };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
   return (
     <div style={{ paddingTop: '80px' }}>
       {/* Hero Section */}
-      <section style={{
-        padding: '80px 24px',
-        textAlign: 'center',
-        background: 'var(--bg-secondary)'
-      }}>
+      <section style={{ padding: '80px 24px', textAlign: 'center', background: 'var(--bg-secondary)' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h1 className="display-md" style={{ marginBottom: '20px' }}>
             Kontaktirajte <span style={{ color: 'var(--accent-red)' }}>Nas</span>
@@ -77,22 +73,11 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Content */}
-      <section style={{
-        padding: '80px 24px',
-        maxWidth: '1200px',
-        margin: '0 auto'
-      }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
-          gap: '48px'
-        }}>
-          {/* Contact Form */}
+      {/* Contact Form */}
+      <section style={{ padding: '80px 24px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '48px' }}>
           <div>
-            <h2 className="h1" style={{ marginBottom: '24px' }}>
-              Pošaljite Upit
-            </h2>
+            <h2 className="h1" style={{ marginBottom: '24px' }}>Pošaljite Upit</h2>
             
             {submitted ? (
               <div style={{
@@ -124,39 +109,24 @@ const Contact = () => {
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div>
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                    Ime i Prezime *
-                  </label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} required className="input-field" placeholder="Vaše ime" />
+                  <label>Ime i Prezime *</label>
+                  <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Vaše ime" />
                 </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                  <div>
-                    <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                      Email *
-                    </label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required className="input-field" placeholder="vas@email.com" />
-                  </div>
-                  <div>
-                    <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                      Telefon *
-                    </label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required className="input-field" placeholder="069/123-4567" />
-                  </div>
-                </div>
-
                 <div>
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                    Marka i Model Vozila
-                  </label>
-                  <input type="text" name="car" value={formData.car} onChange={handleChange} className="input-field" placeholder="npr. BMW 520d 2019" />
+                  <label>Email *</label>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="vas@email.com" />
                 </div>
-
                 <div>
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                    Tip Usluge
-                  </label>
-                  <select name="service" value={formData.service} onChange={handleChange} className="input-field" style={{ cursor: 'pointer' }}>
+                  <label>Telefon *</label>
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required placeholder="069/123-4567" />
+                </div>
+                <div>
+                  <label>Vozilo</label>
+                  <input type="text" name="car" value={formData.car} onChange={handleChange} placeholder="npr. BMW 520d 2019" />
+                </div>
+                <div>
+                  <label>Usluga</label>
+                  <select name="service" value={formData.service} onChange={handleChange}>
                     <option value="">Izaberite uslugu</option>
                     <option value="maps">Ažuriranje Mapa</option>
                     <option value="unlock">Otključavanje Opcija</option>
@@ -166,27 +136,13 @@ const Contact = () => {
                     <option value="other">Ostalo</option>
                   </select>
                 </div>
-
                 <div>
-                  <label style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                    Poruka
-                  </label>
-                  <textarea name="message" value={formData.message} onChange={handleChange} className="input-field" placeholder="Dodatne informacije..." />
+                  <label>Poruka</label>
+                  <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Dodatne informacije..." />
                 </div>
-
-                <button type="submit" className="btn-red" style={{ width: '100%' }}>
-                  Pošalji Upit <Send size={20} />
-                </button>
+                <button type="submit">Pošalji Upit <Send size={20} /></button>
               </form>
             )}
-          </div>
-
-          {/* Contact Info & Instagram */}
-          <div>
-            <h2 className="h1" style={{ marginBottom: '24px' }}>
-              Kontakt Informacije
-            </h2>
-            {/* Your contact info cards here */}
           </div>
         </div>
       </section>
