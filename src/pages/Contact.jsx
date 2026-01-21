@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { contactInfo, instagramPosts } from '../mock';
 import { Phone, Instagram, MapPin, Clock, Send } from 'lucide-react';
 
