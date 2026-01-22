@@ -190,7 +190,7 @@ const Footer = () => {
           color: 'var(--text-muted)',
           fontSize: '14px'
         }}>
-          <p>© 2025 CodeDox.rs - Sva prava zadržana</p>
+          <p>© 2025 CODEDOX.RS - Sva prava zadržana</p>
         </div>
       </div>
     </footer>

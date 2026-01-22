@@ -146,7 +146,7 @@ const Services = () => {
                     color: 'var(--text-muted)',
                     fontSize: '14px'
                   }}>
-                    Cena: <span style={{ color: 'var(--accent-red)', fontWeight: 600 }}>Kontaktirajte nas za ponudu</span>
+                     <span style={{ color: 'var(--accent-red)', fontWeight: 600 }}>Kontaktirajte nas</span>
                   </span>
                 </div>
               </div>

@@ -60,7 +60,7 @@ const Navigation = () => {
             fontWeight: 700,
             color: 'var(--text-primary)'
           }}>
-            CodeDox<span style={{ color: 'var(--accent-red)' }}>.rs</span>
+            CODEDOX<span style={{ color: 'var(--accent-white)' }}>.RS</span>
           </span>
         </Link>
 

@@ -69,7 +69,7 @@ export const services = [
     features: [
       "Popravka elektronike",
       "Optimizacija sistema",
-      "Servis motora",
+      
       "Stručna podrška"
     ]
   }
