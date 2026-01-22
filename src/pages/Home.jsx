@@ -71,14 +71,14 @@ const Home = () => {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
           }}>
-            Otključajte Pravi<br />
+            Otključajte pravi<br />
             <span style={{
               background: 'linear-gradient(135deg, var(--accent-red) 0%, rgb(255, 80, 80) 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>
-              Potencijal Vozila
+              potencijal vašeg vozila
             </span>
           </h1>
 
